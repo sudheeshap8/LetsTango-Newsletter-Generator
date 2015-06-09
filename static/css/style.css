@@ -1,0 +1,123 @@
+.header {
+	text-align: center;
+	margin: 80px 0 50px;
+}
+
+#newsletter {
+	border: 1px solid #eee;
+	background-color:#D0D0D0;
+}
+
+#monday-hero-banner {
+	height: 306px;
+	width: 679px;
+}
+
+.heroBanner i.glyphicon {
+	font-size: 40px !important;
+	margin: 20% auto !important;
+    color: #aaa;
+}
+
+.tile {
+	background-color: #eee;
+	width: 335px;
+	height: 197px;
+}
+
+.tile i.glyphicon {
+	width: 100%;
+	height: 100%;
+	margin: 25% auto;
+	font-size: 30px;
+    color: #aaa;
+}
+
+.modal-body > .row {
+	//margin: auto 5px;
+}
+
+.modal-body .col-md-12 {
+	//padding: 10px 0px;
+}
+
+#editBoxCloseBtn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 25px;
+	color: #aaa;
+}
+
+iframe {
+	//display: none;
+	width: 1200px;
+}
+
+.productsContainer {
+	position: relative;
+	margin-top: 10px;
+}
+
+#edit-container {
+	display: none;
+	position: absolute;
+	left: 2%;
+    top: 2%;
+    right: 2%;
+    bottom: 2%;
+    width: 96%;
+    height: 100%;
+	background-color: #eee;
+}
+
+#productEditPreview {
+	text-align: center;
+	padding: 10px;
+}
+
+#productEditPreview > a {
+    display: inline-block;
+    background-color: #fff;
+}
+
+#product-list-container {
+	height: 350px;
+	margin-top: 20px;
+}
+
+.tileContainer a {
+    text-decoration: none;
+}
+
+#product-list {
+    height: 100%;
+    overflow: scroll;
+}
+
+.productTile {
+	height: 200px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.productTile:hover {
+    border: 1px solid #ccc;
+}
+
+.productName {
+	color: #333;
+}
+
+.productPrice {
+	color: orange;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.productTile img {
+    //width: 95%;
+    height: 100px;
+}
