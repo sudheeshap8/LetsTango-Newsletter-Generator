@@ -58,50 +58,54 @@ $('#generateBtn').click(function () {
     });
 });
 
+function fetchImages () {
+    console.log('Fetching...');
+    var query = $('#product-search').val();
+    var iframeSrc = 'http://www.letstango.com/search/#q=' + query + '&page=0&minReviewsCount=0&refinements=[]';
+    
+    $('#ltIframe').attr('src', 'http://www.sudheeshap.com/'); //To reset iframe
+    setTimeout(function () {
+        $('#ltIframe').attr('src', iframeSrc);    
+    }, 100);
+}
 
-$('.productsContainer').on('click', '.productTile', function (e) {
-    // console.log("Selected");
-    // console.log(products);
+function loadImage (image_id) {
+    var imgSrc = 'http://www.letstango.com/uploaded/thumbnails/db_file_img_'+ image_id +'_252x252.jpg';
+    setTimeout(function () {
+        $('#prodImg').attr('src', imgSrc);
+    }, 1000);
+}
 
-    // //e.preventDefault();
-    // //e.stopPropagation();
-    // products.push($(this).closest('article').data('item'));
+$('.productsContainer').on('click', '.productTile', function () {
     var item = $(this).closest('.tileContainer').data().item;
-    var iframeSrc = 'http://www.letstango.com/product/' + item.url;
-    
-    $('#ltIframe').attr('src', iframeSrc);
-    
-
+    fetchImages();
+    loadImage(item.image_id);
     $('#edit-container').slideDown();
     console.log(item);
 
-    $('#productEditPreview').append($(this).closest('.tileContainer').data());
+    $('#productEditPreview').append(item);
+    $('#product-search').focus();
 });
+//$('#product-search').on('blur', fetchImages);
 
-$('#product-search').on('keyup', function () {
+$('#product-search').on('keydown', function (e) {
     var query = $(this).val();
-    //var iframeSrc = 'http://www.letstango.com/search/#q=' + query + '&page=0&minReviewsCount=0&refinements=[]';
-    //$('#ltIframe').attr('src', 'http://www.letstango.comx/');
-    //setTimeout(function () {
-        //$('#ltIframe').attr('src', iframeSrc);
-        //console.log($('#ltIframe').attr('src'));
-    //}, 50);
+    if (e.which === 13) {
+        fetchImages();
+    	index.search(query, function searchDone(err, content) {
+    	  // err is either `null` or an `Error` object, with a `message` property
+    	  // content is either the result of the command or `undefined`
 
-	// Callback example
-	index.search(query, function searchDone(err, content) {
-	  // err is either `null` or an `Error` object, with a `message` property
-	  // content is either the result of the command or `undefined`
+    	  if (err) {
+    	    console.error(err);
+    	    return;
+    	  }
 
-	  if (err) {
-	    console.error(err);
-	    return;
-	  }
-
-	  //console.log(content);
-      // $('#product-list').text(content);
-      renderProductList(content.hits);
-	});
-
+    	  //console.log(content);
+          // $('#product-list').text(content);
+          renderProductList(content.hits);
+    	});
+    }
 });
 
 // // Promise example
